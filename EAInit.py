@@ -28,6 +28,9 @@ import FreeCAD
 import FreeCADGui
 import ExplodedAssembly as ea
 import CameraAnimation as ca
+from EAUtils import LanguagePath, iconPath, translate
+FreeCADGui.addLanguagePath(LanguagePath)
+FreeCADGui.updateLocale()
 __dir__ = os.path.dirname(__file__)
 
 # TODO CHANGE NAME: SIMPLE DISASSEMBLE GROUP, WIRE DISASSEMBLE GROUP
@@ -36,8 +39,8 @@ __dir__ = os.path.dirname(__file__)
 class CreateBoltGroup:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/BoltGroup.svg',
-                'MenuText': 'Create Bolt Group',
-                'ToolTip': 'Create a special exploded group for screws, nuts, bolts... \n Select circular edges of the shape you want to animate, then\n select one face (arbitrary shape) wich has as normal vector\nin the direction in wich you want to move the selected shapes'}
+                'MenuText': translate("ExplodedAssembly", 'Create Bolt Group'),
+                'ToolTip': translate("ExplodedAssembly", 'Create a special exploded group for screws, nuts, bolts... \n Select circular edges of the shape you want to animate, then\n select one face (arbitrary shape) wich has as normal vector\nin the direction in wich you want to move the selected shapes')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument:
@@ -55,8 +58,8 @@ class CreateBoltGroup:
 class CreateSimpleGroup:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/SimpleGroup.svg',
-                'MenuText': 'Create Simple Group',
-                'ToolTip': 'Select the objects you want to explode and\nfinally the face which its normal is the trajectory director vector'}
+                'MenuText': translate("ExplodedAssembly", 'Create Simple Group'),
+                'ToolTip': translate("ExplodedAssembly", 'Select the objects you want to explode and\nfinally the face which its normal is the trajectory director vector')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument:
@@ -73,8 +76,8 @@ class CreateSimpleGroup:
 class CreateWireGroup:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/WireTrajectory.svg',
-                'MenuText': 'Create Route',
-                'ToolTip': 'Select first one or more shapes and last the wire or sketch that represents the trajectory'}
+                'MenuText': translate("ExplodedAssembly", 'Create Route'),
+                'ToolTip': translate("ExplodedAssembly", 'Select first one or more shapes and last the wire or sketch that represents the trajectory')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument:
@@ -93,8 +96,8 @@ class PlaceBeforeSelectedTrajectory:
     # execute this function with caution
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/PlaceBeforeTrajectory.svg',
-                'MenuText': 'PlaceBefore',
-                'ToolTip': 'Select the trajectories you want to reallocate (in order) and finally\nthe trajectory before which you want to place them'}
+                'MenuText': translate("ExplodedAssembly", 'PlaceBefore'),
+                'ToolTip': translate("ExplodedAssembly", 'Select the trajectories you want to reallocate (in order) and finally\nthe trajectory before which you want to place them')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument:
@@ -118,14 +121,14 @@ class PlaceBeforeSelectedTrajectory:
             ea.goToSelectedTrajectory()
 
         except:
-            FreeCAD.Console.PrintError('\n Select exploded assembly trajectory objects only')
+            FreeCAD.Console.PrintError(translate("ExplodedAssembly", '\n Select exploded assembly trajectory objects only'))
 
 class ModifyIndividualObjectTrajectory:
         # execute this function with caution
         def GetResources(self):
             return {'Pixmap': __dir__ + '/icons/ModifyIndividualObjectTrajectory.svg',
-                    'MenuText': 'Modify Individual Object Trajectory',
-                    'ToolTip': 'Explode objects on several directions at once\nSelect the trajectory, select the object and\nthe face which its normal is the new director\nvector'}
+                    'MenuText': translate("ExplodedAssembly", 'Modify Individual Object Trajectory'),
+                    'ToolTip': translate("ExplodedAssembly", 'Explode objects on several directions at once\nSelect the trajectory, select the object and\nthe face which its normal is the new director\nvector')}
 
         def IsActive(self):
             if FreeCADGui.ActiveDocument:
@@ -148,8 +151,8 @@ class ModifyIndividualObjectTrajectory:
 class CreateManualCamera:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/AnimationCameraManual.svg',
-                'MenuText': 'Manual Animation Camera',
-                'ToolTip': 'Create a transition between two cameras'}
+                'MenuText': translate("ExplodedAssembly", 'Manual Animation Camera'),
+                'ToolTip': translate("ExplodedAssembly", 'Create a transition between two cameras')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument:
@@ -166,8 +169,8 @@ class CreateManualCamera:
 class CreateEdgeCamera:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/AnimationCameraEdge.svg',
-                'MenuText': 'Manual Animation Camera',
-                'ToolTip': 'Create a transition between two cameras'}
+                'MenuText': translate("ExplodedAssembly", 'Manual Animation Camera'),
+                'ToolTip': translate("ExplodedAssembly", 'Create a transition between two cameras')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument:
@@ -184,8 +187,8 @@ class CreateEdgeCamera:
 class CreateFollowCamera:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/AnimationCameraFollow.svg',
-                'MenuText': 'Manual Animation Camera',
-                'ToolTip': 'Create a transition between two cameras'}
+                'MenuText': translate("ExplodedAssembly", 'Manual Animation Camera'),
+                'ToolTip': translate("ExplodedAssembly", 'Create a transition between two cameras')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument:
@@ -202,8 +205,8 @@ class CreateFollowCamera:
 class PlayForward:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/PlayForward.svg',
-                'MenuText': 'Play Forward',
-                'ToolTip': 'Run the assembly animation'}
+                'MenuText': translate("ExplodedAssembly", 'Play Forward'),
+                'ToolTip': translate("ExplodedAssembly", 'Run the assembly animation')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument:
@@ -229,7 +232,7 @@ class PlayForward:
 class PlayBackward:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/PlayBackward.svg',
-                'MenuText': 'Play Backwards',
+                'MenuText': translate("ExplodedAssembly", 'Play Backwards'),
                 'ToolTip': __dir__ + 'icons/TrajectoryEdit.svg'}
 
     def IsActive(self):
@@ -258,8 +261,8 @@ class PlayBackward:
 class StopAnimation:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/Pause.svg',
-                'MenuText': 'StopAnimation',
-                'ToolTip': 'Stops the animation at the current trajectory'}
+                'MenuText': translate("ExplodedAssembly", 'StopAnimation'),
+                'ToolTip': translate("ExplodedAssembly", 'Stops the animation at the current trajectory')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument:
@@ -280,8 +283,8 @@ class StopAnimation:
 class GoToStart:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/GoToStart.svg',
-                'MenuText': 'Assemble',
-                'ToolTip': 'Go to the assembled position of the parts'}
+                'MenuText': translate("ExplodedAssembly", 'Assemble'),
+                'ToolTip': translate("ExplodedAssembly", 'Go to the assembled position of the parts')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument.ExplodedAssembly:
@@ -299,8 +302,8 @@ class GoToStart:
 class GoToEnd:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/GoToEnd.svg',
-                'MenuText': 'Disassemble',
-                'ToolTip': 'Expand all trajectories'}
+                'MenuText': translate("ExplodedAssembly", 'Disassemble'),
+                'ToolTip': translate("ExplodedAssembly", 'Expand all trajectories')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument.ExplodedAssembly:
@@ -319,8 +322,8 @@ class GoToEnd:
 class GoToSelectedTrajectory:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/ExplodeToSelection.svg',
-                'MenuText': 'ExplodeToSelection',
-                'ToolTip': 'Expand up to the selected trajectory'}
+                'MenuText': translate("ExplodedAssembly", 'ExplodeToSelection'),
+                'ToolTip': translate("ExplodedAssembly", 'Expand up to the selected trajectory')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument.ExplodedAssembly:
@@ -336,7 +339,7 @@ class GoToSelectedTrajectory:
             ea.goToSelectedTrajectory()
 
         except:
-            FreeCAD.Console.PrintError('Error: Select one exploded animation trajectory')
+            FreeCAD.Console.PrintError(translate("ExplodedAssembly", 'Error: Select one exploded animation trajectory'))
 
 
 class ToggleTrajectoryVisibility:
@@ -345,8 +348,8 @@ class ToggleTrajectoryVisibility:
 
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/TrajectoryLineVisibility.svg',
-                'MenuText': 'Trajectory Visibility',
-                'ToolTip': 'Toggle trajectory visibility'}
+                'MenuText': translate("ExplodedAssembly", 'Trajectory Visibility'),
+                'ToolTip': translate("ExplodedAssembly", 'Toggle trajectory visibility')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument.ExplodedAssembly:
@@ -365,8 +368,8 @@ class ToggleTrajectoryVisibility:
 class AlignToEdge:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/AlignToEdge.svg',
-                'MenuText': 'Align to edge',
-                'ToolTip': 'Auxiliary tool to align shapes.\nPick one edge of the object you want to align and\nthen the edge of the object used as reference'}
+                'MenuText': translate("ExplodedAssembly", 'Align to edge'),
+                'ToolTip': translate("ExplodedAssembly", 'Auxiliary tool to align shapes.\nPick one edge of the object you want to align and\nthen the edge of the object used as reference')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument:
@@ -396,8 +399,8 @@ class AlignToEdge:
 class Rotate15:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/Rotate90.svg',
-                'MenuText': 'Rotate 15',
-                'ToolTip': 'Auxiliary tool to rotate a shape 15 degrees.\nSelect a face of the object you want to rotate\n and it will be rotated 15 degrees using its normal as rotation\n axis'}
+                'MenuText': translate("ExplodedAssembly", 'Rotate 15'),
+                'ToolTip': translate("ExplodedAssembly", 'Auxiliary tool to rotate a shape 15 degrees.\nSelect a face of the object you want to rotate\n and it will be rotated 15 degrees using its normal as rotation\n axis')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument:
@@ -419,8 +422,8 @@ class Rotate15:
 class PointToPoint:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/SharePoint.svg',
-                'MenuText': 'Point to point',
-                'ToolTip': 'Auxiliary tool to move point to point.\nSelect one point from the shape you want to move \n and then the point from other shape where you want to place it'}
+                'MenuText': translate("ExplodedAssembly", 'Point to point'),
+                'ToolTip': translate("ExplodedAssembly", 'Auxiliary tool to move point to point.\nSelect one point from the shape you want to move \n and then the point from other shape where you want to place it')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument:
@@ -444,8 +447,8 @@ class PointToPoint:
 class PlaceConcentric:
     def GetResources(self):
         return {'Pixmap': __dir__ + '/icons/ShareCenter.svg',
-                'MenuText': 'Place concentrically',
-                'ToolTip': 'Auxiliary tool to place two shapes concentrically\nPlace the first circular edge selected concentric to \nthe second circular edge selected'}
+                'MenuText': translate("ExplodedAssembly", 'Place concentrically'),
+                'ToolTip': translate("ExplodedAssembly", 'Auxiliary tool to place two shapes concentrically\nPlace the first circular edge selected concentric to \nthe second circular edge selected')}
 
     def IsActive(self):
         if FreeCADGui.ActiveDocument:
@@ -470,8 +473,8 @@ class PlaceConcentric:
 class LoadExampleFile:
     def GetResources(self):
         return {'Pixmap': '',
-                'MenuText': 'Load Example File',
-                'ToolTip': 'Load an exploded assembly example file'}
+                'MenuText': translate("ExplodedAssembly", 'Load Example File'),
+                'ToolTip': translate("ExplodedAssembly", 'Load an exploded assembly example file')}
 
     def IsActive(self):
         if not(FreeCADGui.ActiveDocument):

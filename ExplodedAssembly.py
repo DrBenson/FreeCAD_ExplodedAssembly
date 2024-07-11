@@ -26,7 +26,12 @@ from __future__ import division
 import os
 import time
 import FreeCAD
+import FreeCADGui
 import Part
+
+from EAUtils import LanguagePath, iconPath, translate
+FreeCADGui.addLanguagePath(LanguagePath)
+FreeCADGui.updateLocale()
 
 
 # Container python folder 'ExplodedAssembly'

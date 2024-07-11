@@ -29,12 +29,20 @@ __url__ = "http://linuxforanengineer.blogspot.com"
 import FreeCAD
 import FreeCADGui
 
+from EAUtils import LanguagePath, iconPath
+FreeCADGui.addLanguagePath(LanguagePath)
+FreeCADGui.updateLocale()
+'''
+def translate(context: str, text: str) -> str:
+    """Wrap strings which should be translated in in this function."""
+    return FreeCAD.Qt.translate(context, text)
+'''
 class ExplodedAssembly(Workbench):
     import EAInit# this is needed to load the workbench icon
     # __dir__ = os.path.dirname( __file__ ) # __file__ is not working
     Icon = EAInit.__dir__ + '/icons/WorkbenchIcon.svg'
-    MenuText = 'Exploded Assembly'
-    ToolTip = 'Assemble parts and create exploded drawings and animations'
+    MenuText = FreeCAD.Qt.translate("Workbench", 'Exploded Assembly')
+    ToolTip = FreeCAD.Qt.translate("Workbench", 'Assemble parts and create exploded drawings and animations')
 
     def GetClassName(self):
         return 'Gui::PythonWorkbench'
@@ -92,7 +100,7 @@ class ExplodedAssembly(Workbench):
             FreeCAD.newDocument()
 
         ea.checkDocumentStructure()
-        FreeCAD.Console.PrintMessage('Exploded Assembly workbench loaded\n')
+        FreeCAD.Console.PrintMessage(FreeCAD.Qt.translate("Workbench", 'Exploded Assembly workbench loaded\n'))
 
 
 FreeCADGui.addWorkbench(ExplodedAssembly)

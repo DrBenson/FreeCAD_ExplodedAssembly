@@ -26,9 +26,12 @@ from __future__ import division
 import os
 import time
 import FreeCAD
+import FreeCADGui
 import Part
 from pivy import coin
-
+from EAUtils import LanguagePath, iconPath, translate
+FreeCADGui.addLanguagePath(LanguagePath)
+FreeCADGui.updateLocale()
 
 
 """
@@ -54,14 +57,14 @@ class AnimationCamera:
 """
 class ManualAnimationCamera:
     def __init__(self, obj):
-        obj.addProperty('App::PropertyBool', 'Enable', 'Enable Camera')
-        obj.addProperty('App::PropertyString', 'RunFrom', 'Interval')
-        obj.addProperty('App::PropertyString', 'RunTo', 'Interval')
-        obj.addProperty('App::PropertyVector', 'InitialCameraBase', 'Camera Position')
-        obj.addProperty('App::PropertyVector', 'FinalCameraBase', 'Camera Position')
-        obj.addProperty('App::PropertyVector', 'InitialCameraLookPoint', 'Camera Position')
-        obj.addProperty('App::PropertyVector', 'FinalCameraLookPoint', 'Camera Position')
-        obj.addProperty('App::PropertyEnumeration', 'Transition', 'Camera Transition').Transition = ['Sudden', 'Linear']
+        obj.addProperty('App::PropertyBool', 'Enable', translate("ExplodedAssembly", 'Enable Camera'))
+        obj.addProperty('App::PropertyString', 'RunFrom', translate("ExplodedAssembly", 'Interval'))
+        obj.addProperty('App::PropertyString', 'RunTo', translate("ExplodedAssembly", 'Interval'))
+        obj.addProperty('App::PropertyVector', 'InitialCameraBase', translate("ExplodedAssembly", 'Camera Position'))
+        obj.addProperty('App::PropertyVector', 'FinalCameraBase', translate("ExplodedAssembly", 'Camera Position'))
+        obj.addProperty('App::PropertyVector', 'InitialCameraLookPoint', translate("ExplodedAssembly", 'Camera Position'))
+        obj.addProperty('App::PropertyVector', 'FinalCameraLookPoint', translate("ExplodedAssembly", 'Camera Position'))
+        obj.addProperty('App::PropertyEnumeration', 'Transition', translate("ExplodedAssembly", 'Camera Transition')).Transition = ['Sudden', 'Linear']
 
 
 class ManualAnimationCameraViewProvider:
@@ -91,7 +94,7 @@ def createManualCamera():
     FreeCAD.Gui.Selection.addSelection(EAFolder.Group[0])
     from ExplodedAssembly import placeBeforeSelectedTrajectory
     placeBeforeSelectedTrajectory()
-    FreeCAD.Console.PrintMessage('\nManual camera created\n')
+    FreeCAD.Console.PrintMessage(translate("ExplodedAssembly", '\nManual camera created\n'))
 
 """from FreeCAD import Base
 cam = FreeCADGui.ActiveDocument.ActiveView.getCameraNode()
