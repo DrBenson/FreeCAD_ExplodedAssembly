@@ -277,6 +277,11 @@ the second circular edge selected</source>
         <translation>分解零件組合</translation>
     </message>
     <message>
+        <location filename="../InitGui.py" line="95"/>
+        <source>ExplodedAssembly</source>
+        <translation>分解零件組合</translation>
+    </message>
+    <message>
         <location filename="../InitGui.py" line="45"/>
         <source>Assemble parts and create exploded drawings and animations</source>
         <translation>零件組合並建立分解圖紙和動畫</translation>

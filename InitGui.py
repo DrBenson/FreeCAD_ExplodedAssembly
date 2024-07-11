@@ -92,7 +92,7 @@ class ExplodedAssembly(Workbench):
         #self.appendToolbar('ExplodedAssemblyCameraTools', self.CameraAnimation)
         self.appendToolbar('ExplodedAssemblyAnimationControlTools', self.AnimationControlTools)
         self.appendToolbar('ExplodedAssemblyAuxiliarAssemblyTools', self.AuxiliaryAssemblyTools)
-        self.appendMenu('ExplodedAssembly', self.Menu_tools)
+        self.appendMenu(FreeCAD.Qt.translate("Workbench", 'ExplodedAssembly'), self.Menu_tools)
 
     def Activated(self):
         import ExplodedAssembly as ea
