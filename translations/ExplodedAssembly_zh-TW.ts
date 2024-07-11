@@ -266,7 +266,7 @@ the second circular edge selected</source>
     <message>
         <location filename="../EAInit.py" line="481"/>
         <source>Load an exploded assembly example file</source>
-        <translation>載入分解零件組合範例檔案</translation>
+        <translation>載入零件組合分解範例檔案</translation>
     </message>
 </context>
 <context>
@@ -274,12 +274,12 @@ the second circular edge selected</source>
     <message>
         <location filename="../InitGui.py" line="43"/>
         <source>Exploded Assembly</source>
-        <translation>分解零件組合</translation>
+        <translation>零件組合分解</translation>
     </message>
     <message>
         <location filename="../InitGui.py" line="95"/>
         <source>ExplodedAssembly</source>
-        <translation>分解零件組合</translation>
+        <translation>零件組合分解</translation>
     </message>
     <message>
         <location filename="../InitGui.py" line="45"/>
@@ -290,7 +290,7 @@ the second circular edge selected</source>
         <location filename="../InitGui.py" line="101"/>
         <source>Exploded Assembly workbench loaded
 </source>
-        <translation>分解零件組合 工作台已載入
+        <translation>零件組合分解 工作台已載入
 </translation>
     </message>
 </context>
